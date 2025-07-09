@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <BrowserRouter basename="/prototipohome"> {/* 👈 importante */}
-      <App />
-    </BrowserRouter>
+const basename = process.env.NODE_ENV === 'production' ? '/prototipohome' : '/';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter basename={basename}>
+    <App />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

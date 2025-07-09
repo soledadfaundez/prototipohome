@@ -6,14 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
       <Routes>
         {/* Ruta raíz muestra el Home por defecto */}
         <Route path="/" element={<Home />} />
         {/* Ruta para el componente ranking */}
         <Route path="/ranking" element={<RankingPage />} />
       </Routes>
-    </Router>
   );
 }
 export default App;
