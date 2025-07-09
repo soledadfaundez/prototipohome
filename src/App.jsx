@@ -4,9 +4,10 @@ import Home from './homev2'; // Importa automáticamente src/homev2/index.jsx
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      {/* Agrega más rutas si las necesitas */}
+    </Routes>
   );
 }
 
