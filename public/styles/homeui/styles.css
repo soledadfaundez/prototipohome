@@ -3,13 +3,23 @@
 .cu-landing {
     display: flex;
     justify-content: flex-start; /* alinea al inicio (izquierda) */
-    padding: 2rem 5rem;
+    padding: 8rem 5rem 1rem 5rem;
     text-align: left;
     background: linear-gradient(
         rgba(255, 255, 255, 0.1), 
         rgba(255, 255, 255, 0.1)
     ),
     url('https://set-dev.sma.gob.cl/static/media/FondoInicio.6bec6e3e054a8642fdd2.png');
+    background-size: cover;
+    background-position: center top 5%;
+    background-repeat: no-repeat;
+}
+/* Custom styles for the landing section */
+.ra-landing {
+    display: flex;    
+    justify-content: center; /* Centra horizontalmente */
+    padding: 2rem 5rem;
+    text-align: left;   
     background-size: cover;
     background-position: center top 5%;
     background-repeat: no-repeat;
@@ -492,6 +502,25 @@ body.dark-mode {
     opacity: 1;
 }
 
+/* control del modal */
+/* Oculto */
+.hidden {
+  display: none !important;
+}
+
+/* Visible (flex para centrar) */
+.flex-center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header.css */
+.nav-desktop {
+  display: flex;
+  gap: 2rem;
+}
+
 /* Animación flotante */
 @keyframes float {
     0%, 100% {
@@ -502,8 +531,217 @@ body.dark-mode {
     }
 }
 
+/* Estilos para ranking */
+
+.tab-container {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 10px;
+    display: flex; 
+    background: #f1f5f9;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 8px 0;;
+    top: 20%;
+    align-content: center;
+    width: 80%;
+    scroll-behavior: smooth;
+}
+
+.tab {
+    padding: 18px 30px;
+    cursor: pointer;
+    background: #f8fafc;
+    border: none;
+    border-right: 1px solid #cbd5e1;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tab:hover {
+    background: #e2e8f0;
+    color: #475569;
+    transform: translateY(-1px);
+}
+
+.tab.active {
+    background: #87ceeb;
+    color: white;
+    border-bottom: 4px solid #4682b4;
+    box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.tab-content {
+    display: none;
+    padding: 30px;
+    min-height: 650px;
+    width: 80%;    
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#chartContainer, #chartContainer2, #chartContainer3 {
+    width: 80%;
+    height: 550px;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.info-content {
+    line-height: 1.8;
+    color: #475569;
+    max-width: 800px;
+}
+
+.info-content h3 {
+    color: #1e293b;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.info-content p {
+    margin-bottom: 18px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 12px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f1f5f9;
+    border-top: 5px solid #87ceeb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+highcharts-figure,
+.highcharts-data-table table {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 400px;
+    width: 80%;
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid var(--highcharts-neutral-color-10, #e6e6e6);
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: var(--highcharts-neutral-color-60, #666);
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tbody tr:nth-child(even) {
+    background: var(--highcharts-neutral-color-3, #f7f7f7);
+}
+
+.highcharts-description {
+    margin: 0.3rem 10px;
+}
+
+.custom-tooltip {
+    background: rgba(255,255,255,0.98) !important;
+    border: 2px solid #87ceeb !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+    max-width: 280px !important;
+}
+
+/* para mostrar mejor el panel el movile */
+.chart-container {
+  display: block;
+}
+
+/* para mostrar mejor tabs el movile */
+.tab-button {
+  flex: 0 0 auto; /* no se encogen */
+  padding: 10px 16px;
+  font-size: 14px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap; /* evita que se corte texto */
+  transition: background 0.3s ease;
+}
+
+.tab-button:hover {
+  background: #e0e0e0;
+}
+
+.tab-button.active {
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+}
+
+/* mejora para botones modal para móviles */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .nav-desktop {
+      display: none;
+    }
+
     .landing-content {
         width: 95%;
     }
@@ -536,6 +774,21 @@ body.dark-mode {
         width: 100%;
         left: 0;
         transform: none;
+    }
+
+    /* para mostrar mejor el panel el movile */
+    .chart-container {
+        display: none;
+    }
+    
+    /* mejora para botones modal para móviles */
+    .modal-buttons {
+        flex-direction: column;
+        align-items: stretch; /* los botones ocupan todo el ancho */
+    }
+
+    .modal-buttons button {
+        width: 100%;
     }
 }
 

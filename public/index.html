@@ -1,0 +1,52 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="%PUBLIC_URL%/static/media/homeui/favicon.ico" />
+  <title>Sistema de Entidades Técnicas</title>
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles/homeui/styles.css" />
+  <link rel="stylesheet" href="%PUBLIC_URL%/styles/homeui/Header.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- jsPDF plugin: autoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // ✅ Variable global
+    let currentTabName = 'Aguas Residuales';
+  </script>
+</head>
+<body>
+  <!-- Ancla para ir al top -->
+  <div id="top"></div>
+  <div id="root"></div>
+  <iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+  <a href="#top" class="btn-top">↑</a>
+  <!-- Accesibilidad -->
+  <div class="accessibility-nav">
+    <button class="accessibility-toggle" id="toggleMenu" aria-label="Opciones de accesibilidad">☰
+      <i class="fas fa-universal-access" aria-label="Accesibilidad" title="Accesibilidad"></i>
+    </button>
+    <div class="accessibility-menu" id="accessibilityMenu">
+      <h4>Tamaño de letra</h4>
+      <button onclick="changeFontSize(-1)">🔽 Disminuir</button>
+      <button onclick="resetFontSize()">🔁 Restablecer</button>
+      <button onclick="changeFontSize(1)">🔼 Aumentar</button>
+      <h4>Contraste</h4>
+      <button onclick="toggleDarkMode()">💡Modo oscuro</button>
+    </div>
+  </div>
+
+  <!-- Scripts DOM cargado completamente -->
+  <script src="%PUBLIC_URL%/scripts/homeui/scripts_end.js"></script>
+</body>
+</html>
+
+<!-- EFC: Se instalaron:
+npm install highcharts highcharts-react-official
+npm install react-router-dom
+npm install highcharts
+npm install exceljs file-saver
+npm install gh-pages --save-dev  -- npm run deploy
+-->
