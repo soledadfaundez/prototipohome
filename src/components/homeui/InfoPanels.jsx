@@ -43,7 +43,7 @@ export default function InfoPanels() {
             </div>
             <div className="w-full md:w-1/2 flex justify-center relative">
               <div className="relative">
-                <img src="static/media/queessistema.png" alt="Ilustración sistema" className="illustration-small" />
+                <img src={`${process.env.PUBLIC_URL}/static/media/queessistema.png`} alt="Ilustración sistema" className="illustration-small" />
                 <div className="gradient-overlay"></div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function InfoPanels() {
             </div>
             <div className="w-full md:w-1/2 flex justify-center relative">
               <div className="relative">
-                <img src="static/media/asistenciadeCumpli.png" alt="Ilustración asistencias" className="illustration-small" />
+                <img src={`${process.env.PUBLIC_URL}/static/media/asistenciadeCumpli.png`} alt="Ilustración asistencias" className="illustration-small" />
                 <div className="gradient-overlay"></div>
               </div>
             </div>
@@ -91,7 +91,7 @@ export default function InfoPanels() {
         <div className="flex flex-col md:flex-row items-center text-center md:text-left">
           <div className="floating-animation mb-6 md:mb-0 md:mr-8">
             <div className="relative">
-              <img src="static/media/consultasOIRS.png" alt="Ilustración asistencias" style={{ width: 100, height: 'auto' }} />
+              <img src={`${process.env.PUBLIC_URL}/static/media/consultasOIRS.png`}  alt="Ilustración asistencias" style={{ width: 100, height: 'auto' }} />
               <div className="gradient-overlay"></div>
             </div>
           </div>

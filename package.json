@@ -1,7 +1,7 @@
 {
-  "homepage": "https://soledadfaundez.github.io/prototipohome/",
   "name": "homenuevoet",
   "version": "0.1.0",
+  "homepage": "https://soledadfaundez.github.io/prototipohome/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-const basename = process.env.NODE_ENV === 'production' ? '/prototipohome' : '/';
+const basename = '/prototipohome'; // Si estás desplegando en GitHub Pages
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename={basename}>
