@@ -13,17 +13,15 @@ export default function Header() {
     <header className="fixed-header">
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center" title="Ir al Home">
             <div className="logo-wrapper">
               <img className="logo-img" src={`${process.env.PUBLIC_URL}/static/media/LogoSite.png`} alt="Logo-Sisrep" />
             </div>
-          </div>
+          </Link>
 
           <div className="nav-desktop items-start space-x-8">
-            <Link to="/">
-            <a href="#inicio" className="text-white hover:text-blue-200 transition-colors duration-300 flex items-start space-x-2">
+            <Link to="/" className="text-white hover:text-blue-200 transition-colors duration-300 flex items-start space-x-2" title="Ir al Home">
               <span><i className="fa-solid fa-house"></i> Inicio</span>
-            </a>
             </Link>
             <a href="#registro" className="text-white hover:text-blue-200 transition-colors duration-300 flex items-start space-x-2">
               <span><i className="fa-solid fa-user-plus"></i> Proceso de Registro</span>

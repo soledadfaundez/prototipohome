@@ -246,7 +246,7 @@ export default function Ranking() {
       name: item.code,
       y: item.percentage,
       color: getColorByPercentage(item.percentage),
-      drilldown: item.code,
+      /* drilldown: item.code, */ /* EFC: Para desactivar el drilldown */
       entity: item.entity,
       etfa: item.etfa,
       entitylegal: item.entitylegal,
@@ -254,178 +254,197 @@ export default function Ranking() {
     }));
 
     const drilldownSeries = currentData.map(item => ({
-        name: `Detalles - ${item.code}`,
-        id: item.code,
-        data: [
-        { name: 'Código ETFA', y: 25, custom: { label: 'Código ETFA', value: item.etfa }},
-        { name: 'Nombre Sucursal', y: 25, custom: { label: 'Nombre Sucursal', value: item.entity }},
-        { name: 'Persona Jurídica', y: 25, custom: { label: 'Persona Jurídica', value: item.entitylegal }},
-        { name: 'Total Evaluaciones', y: 25, custom: { label: 'Total Evaluaciones', value: item.evaluations }},
-        { name: '% Cumplimiento', y: 25, custom: { label: '% Cumplimiento', value: `${item.percentage}%` }}
-        ],
-        type: 'column',
-        colorByPoint: true,
-        animation: { duration: 800 }
-        }));
+    name: `Detalles - ${item.code}`,
+    id: item.code,
+    data: [
+      { name: 'Código ETFA', y: 25, custom: { label: 'Código ETFA', value: item.etfa }},
+      { name: 'Nombre Sucursal', y: 25, custom: { label: 'Nombre Sucursal', value: item.entity }},
+      { name: 'Persona Jurídica', y: 25, custom: { label: 'Persona Jurídica', value: item.entitylegal }},
+      { name: 'Total Evaluaciones', y: 25, custom: { label: 'Total Evaluaciones', value: item.evaluations }},
+      { name: '% Cumplimiento', y: 25, custom: { label: '% Cumplimiento', value: `${item.percentage}%` }}
+      ],
+    type: 'column',
+    colorByPoint: true,
+    animation: { duration: 800 }
+    }));
 
-        Highcharts.chart(container, {
-        chart: {
-        type: 'column',
-        backgroundColor: 'transparent',
-        style: {
-        fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
-        },
-        animation: {
-        duration: 1000,
-        easing: 'easeOutQuart'
-        }
-        },
-        title: {
-        text: `Cumplimiento por Entidad - ${tabName.replace('-', ' ').toUpperCase()}`,
-        align: 'left',
-        style: {
+    Highcharts.chart(container, {
+      chart: {
+      type: 'column',
+      backgroundColor: 'transparent',
+      style: {
+        fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'},
+      animation: {
+      duration: 1000,
+      easing: 'easeOutQuart'
+      }
+      },
+      title: {
+      text: `Cumplimiento por Entidad - ${tabName.replace('-', ' ').toUpperCase()}`,
+      align: 'left',
+      style: {
         fontSize: '20px',
         fontWeight: '700',
         color: '#1e293b',
-        marginBottom: '20px'
-        }
-        },
-        xAxis: {
-        type: 'category',
-        labels: {
-        rotation: -45,
-        enabled: false, 
-        style: {
-        fontSize: '12px',
-        color: '#475569',
-        fontWeight: '500'
-        },
-        useHTML: false
-        },
-        lineColor: '#cbd5e1',
-        tickColor: '#cbd5e1',
-        crosshair: true,
-        lineWidth: 2
-        },
-        yAxis: {
-        min: 0,
-        max: 100,
-        title: {
-        text: 'Porcentaje de Cumplimiento (%)',
-        style: {
-        color: '#475569',
-        fontSize: '14px',
-        fontWeight: '600'
-        }
-        },
-        gridLineColor: '#f1f5f9',
-        labels: {
-        style: {
-        color: '#475569',
-        fontSize: '12px'
-        },
-        formatter: function () {
-        return this.value + '%';
-        }
-        },
-        lineColor: '#cbd5e1',
-        lineWidth: 2
-        },
-        tooltip: {
-        backgroundColor: 'rgba(255,255,255,0.98)',
-        borderColor: '#87ceeb',
-        borderRadius: 10,
-        borderWidth: 2,
-        shared: true,
-        shadow: {
-        color: 'rgba(0,0,0,0.1)',
-        offsetX: 0,
-        offsetY: 4,
-        opacity: 0.3,
-        width: 8
-        },
-        style: {
-        fontSize: '13px',
-        fontWeight: '500'
-        },
-        formatter: function () {
-        if (this.point.custom) {
-        return `<b>${this.point.custom.label}:</b><br/>${this.point.custom.value}`;
-        }
-        return ` <b><strong>Persona Jurídica:</b> ${this.point.entitylegal}</strong><br/>
-        <b>Nombre Sucursal:</b> ${this.point.entity}<br/>
-        <b>Código ETFA:</b> ${this.point.etfa}<br/>
-        <b>Evaluaciones:</b> ${this.point.evaluations}<br/>
-        <b>Cumplimiento:</b> ${this.y}%`;
-        }
-        },
-        plotOptions: {
-        column: {
+        marginBottom: '20px'}
+      },
+      xAxis: {
+      type: 'category',
+      labels: {
+      rotation: -45,
+      enabled: false, 
+      style: {
+      fontSize: '12px',
+      color: '#475569',
+      fontWeight: '500'
+      },
+    useHTML: false
+    },
+    lineColor: '#cbd5e1',
+    tickColor: '#cbd5e1',
+    crosshair: true,
+    lineWidth: 2
+    },
+    yAxis: {
+    min: 0,
+    max: 100,
+    title: {
+    text: 'Porcentaje de Cumplimiento (%)',
+    style: {
+    color: '#475569',
+    fontSize: '14px',
+    fontWeight: '600'
+    }
+    },
+    gridLineColor: '#f1f5f9',
+    labels: {
+    style: {
+    color: '#475569',
+    fontSize: '12px'
+    },
+    formatter: function () {
+    return this.value + '%';
+    }
+    },
+    lineColor: '#cbd5e1',
+    lineWidth: 2
+    },
+    tooltip: {
+    backgroundColor: 'rgba(255,255,255,0.98)',
+    borderColor: '#87ceeb',
+    borderRadius: 10,
+    borderWidth: 2,
+    shared: true,
+    shadow: {
+    color: 'rgba(0,0,0,0.1)',
+    offsetX: 0,
+    offsetY: 4,
+    opacity: 0.3,
+    width: 8
+    },
+    style: {
+    fontSize: '13px',
+    fontWeight: '500'
+    },
+    formatter: function () {
+    if (this.point.custom) {
+    return `<b>${this.point.custom.label}:</b><br/>${this.point.custom.value}`;
+    }
+    return ` <b><strong>Persona Jurídica:</b> ${this.point.entitylegal}</strong><br/>
+    <b>Nombre Sucursal:</b> ${this.point.entity}<br/>
+    <b>Código ETFA:</b> ${this.point.etfa}<br/>
+    <b>Evaluaciones:</b> ${this.point.evaluations}<br/>
+    <b>Cumplimiento:</b> ${this.y}%`;
+    }
+    },
+    plotOptions: 
+    {
+      column: 
+      {
         pointPadding: 0.05,
         groupPadding: 0.1,
         borderWidth: 0,
         borderRadius: 6,
-        animation: {
-        duration: 1200,
-        easing: 'easeOutQuart'
-        },
-        states: {
-        hover: {
-        color: '#5dade2',
-        brightness: 0.1
-        }
-        }
-        }
-        },
-        series: [
+        animation: 
         {
-        name: 'Cumplimiento',
-        colorByPoint: true,
-        data: seriesData,
-        animation: { duration: 1200 }
+          duration: 1200,
+          easing: 'easeOutQuart'
         },
+        states: 
         {
-        name: 'Línea de Tendencia',
-        type: 'spline',
-        data: seriesData.map(point => point.y),
-        color: '#1e3a8a',
-        lineWidth: 3,
-        marker: {
-        enabled: true,
-        radius: 6,
-        fillColor: '#1e3a8a',
-        lineColor: '#ffffff',
-        lineWidth: 2
-        },
-        enableMouseTracking: false,
-        animation: { duration: 2000 },
-        zIndex: 10
+          hover: 
+          {
+            color: '#5dade2',
+            brightness: 0.1
+          }
         }
-        ],
-        drilldown: {
-        activeAxisLabelStyle: {
-        color: '#87ceeb',
-        fontWeight: 'bold'
-        },
-        activeDataLabelStyle: {
-        color: '#87ceeb',
-        fontWeight: 'bold'
-        },
-        series: drilldownSeries
-        },
-        credits: { enabled: false },
-        legend: {
-        align: 'left',
-        enabled: true,
-        verticalAlign: 'top',
-        itemStyle: {
-        color: '#475569',
-        fontSize: '13px',
-        fontWeight: '500'
+      },
+
+      series: 
+      {
+        point: 
+        {
+          events: 
+          {
+            dblclick: function (e) 
+            {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            }
+          }
         }
-        }
-        });
-        }, 800);
+      }
+    },
+    series: [
+    {
+    name: 'Cumplimiento',
+    colorByPoint: true,
+    data: seriesData,
+    animation: { duration: 1200 }
+    },
+    {
+    name: 'Línea de Tendencia',
+    type: 'spline',
+    data: seriesData.map(point => point.y),
+    color: '#1e3a8a',
+    lineWidth: 3,
+    marker: {
+    enabled: true,
+    radius: 6,
+    fillColor: '#1e3a8a',
+    lineColor: '#ffffff',
+    lineWidth: 2
+    },
+    enableMouseTracking: false,
+    animation: { duration: 2000 },
+    zIndex: 10
+    }
+    ],
+    drilldown: {
+    activeAxisLabelStyle: {
+    color: '#87ceeb',
+    fontWeight: 'bold'
+    },
+    activeDataLabelStyle: {
+    color: '#87ceeb',
+    fontWeight: 'bold'
+    },
+    series: drilldownSeries
+    },
+    credits: { enabled: false },
+    legend: {
+    align: 'left',
+    enabled: true,
+    verticalAlign: 'top',
+    itemStyle: {
+    color: '#475569',
+    fontSize: '13px',
+    fontWeight: '500'
+    }
+    }
+    });
+    }, 800);
     };
 
     /* EFC: Para mantener en variable el nombre del tab activo */
@@ -569,7 +588,7 @@ export default function Ranking() {
               {currentData.map((item, index) => (
                 <tr key={index}>
                   <td className="py-2 px-4 border-b">{item.etfa}</td>
-                  <td className="py-2 px-4 border-b">{item.entitylegal}</td>
+                  <td className="py-2 px-4 border-b"><strong>{item.entitylegal}</strong></td>
                   <td className="py-2 px-4 border-b">{item.entity}</td>
                   <td className="py-2 px-4 border-b text-center">{item.evaluations}</td>
                   <td className="py-2 px-4 border-b text-center font-semibold" style={{  backgroundColor: getColorByPercentage(item.percentage) }}>{item.percentage}%</td>
