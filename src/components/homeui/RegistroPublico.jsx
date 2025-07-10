@@ -25,7 +25,7 @@ export default function RegistroPublico() {
                             <br />
                             <div style={{ textAlign: 'center' }}>
                                 <a
-                                href="https://entidadestecnicas.sma.gob.cl/Home/RegistroPublico"
+                                href="https://set-dev.sma.gob.cl/#/registro-publico"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="boton-verde"

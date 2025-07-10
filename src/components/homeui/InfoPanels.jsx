@@ -108,22 +108,29 @@ export default function InfoPanels() {
       </div>
 
       {/* EFC: DIV de Consultas OIR */}
-      <div className="info-panel-minor cursor-pointer" onClick={() => showMoreInfo('consultas')}>
-        <div className="flex flex-col md:flex-row items-center text-center md:text-left">
-          <div className="floating-animation mb-6 md:mb-0 md:mr-8">
-            <div className="relative">
-              <img src={`${process.env.PUBLIC_URL}/static/media/consultasOIRS.png`}  alt="Ilustración asistencias" style={{ width: 100, height: 'auto' }} />
-              <div className="gradient-overlay"></div>
+      <a 
+          href="https://oac.sma.gob.cl/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="block">
+          <div className="info-panel-minor cursor-pointer" >
+            <div className="flex flex-col md:flex-row items-center text-center md:text-left">
+              <div className="floating-animation mb-6 md:mb-0 md:mr-8">
+                <div className="relative">
+                  <img src={`${process.env.PUBLIC_URL}/static/media/consultasOIRS.png`}  alt="Ilustración asistencias" style={{ width: 100, height: 'auto' }} />
+                  <div className="gradient-overlay"></div>
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Consultas OIRS</h3>
+                <p className="text-gray-600 text-justify leading-relaxed">
+                  Oficina de Información y Respuesta para consultas relacionadas con el sistema de entidades técnicas de fiscalización ambiental.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="flex-1">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">Consultas OIR</h3>
-            <p className="text-gray-600 text-justify leading-relaxed">
-              Oficina de Información y Respuesta para consultas relacionadas con el sistema de entidades técnicas de fiscalización ambiental.
-            </p>
-          </div>
-        </div>
-      </div>
+      </a>
+      
     </div>
   );
 }
