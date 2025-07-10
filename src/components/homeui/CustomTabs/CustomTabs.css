@@ -1,0 +1,181 @@
+.tabs-mobile {
+  display: none;
+}
+
+.tabs-container {
+  display: flex;
+  flex-direction: row; /* Default: tabs a la izquierda */
+  border: 1px solid #ddd;
+  /* width: 600px;   */          /* Ancho fijo (ajústalo según tu necesidad) */
+  /* max-width: 70%; */
+  width: 100%;
+  max-width: 100%;           /* Opcional, pero puedes mantenerlo por claridad */
+  margin-left: auto;
+  margin-right: auto;
+  /* height: 400px; */          /* Alto fijo */
+  height: auto; /* ✅ permite crecer verticalmente según contenido */
+  border-radius: 4px;  
+  margin: 0 auto;
+  font-family: 'Nunito Sans', sans-serif;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  overflow: hidden;         /* Para que el contenido no se desborde */
+}
+
+.tabs-container-ajust {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Nunito Sans', sans-serif;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+}
+.tabs-left {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  border-right: 1px solid #ddd;
+  background-color: #f7f7f7;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  gap: 10px;
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  padding: 12px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  outline: none;
+}
+
+.tab-button:hover {
+  background-color: #eee;
+}
+
+.tab-button.active {
+  border-left-color: #90caf9; /* azul claro */
+  background-color: #fff;
+  color: #1565c0; /* azul más oscuro para texto activo */
+  font-weight: 700;
+}
+
+/* Estilo para la imagen del tab */
+.tab-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Para cuando la imagen es un componente React, se ajusta igual */
+.tab-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Texto del tab centrado verticalmente */
+.tab-title {
+  flex: 1;
+}
+
+.tabs-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  /* overflow-y: auto; */  /* EFC: Hace que salga scroll automático */
+  overflow-y: visible; /* ✅ Asegura que el contenido se muestre completo */
+}
+
+.tabs-mobile {
+  display: none;
+}
+
+/* Versión responsive: tabs arriba */
+@media (max-width: 768px) {
+   .tabs-container {
+    display: none;
+  }
+
+  .tabs-mobile {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .tab-block {
+    /* margin-bottom: 20px; */ /* EFC: Sin espacios */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-tab-button {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1565c0;
+    outline: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .tab-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .tab-arrow.open {
+    transform: rotate(180deg);
+  }
+
+  .tab-content {
+    padding: 12px 16px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    color: #333;
+  }
+
+  .tabs-mobile .tab-content {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  }
+
+  .tabs-mobile .mobile-tab-button {
+  margin: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+  }
+
+   /* Para que si existe contenido en tabla vertical, se pongan en horizontal */
+  .table-like {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-row {
+    display: flex;
+    flex-direction: column; /* cada campo en nueva línea */
+    margin-bottom: 12px;
+  }
+
+  .table-cell {
+    padding: 4px 0;
+  }
+}

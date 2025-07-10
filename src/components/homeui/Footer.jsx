@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Columna 1: Logo izquierda */}
           <div className="w-full md:w-1/3 flex justify-center md:justify-start">
             <img 
-              src="static/media/logo_footer-600x137.png" 
+              src={`${process.env.PUBLIC_URL}/static/media/logo_footer-600x137.png`}
               alt="Logo Footer" 
               className="w-auto max-w-xs min-w-[150px] h-auto"
             />
@@ -47,7 +47,10 @@ const Footer = () => {
 
           {/* Columna 3: Imagen derecha */}
           <div className="w-full md:w-1/3 flex justify-center md:justify-end">
-            <img src="static/media/gob.png" alt="Gobierno de Chile" className="w-32 h-auto" />
+            <img 
+              src={`${process.env.PUBLIC_URL}/static/media/gob.png`}              
+              alt="Gobierno de Chile" 
+              className="w-32 h-auto" />
           </div>
         </div>
       </div>

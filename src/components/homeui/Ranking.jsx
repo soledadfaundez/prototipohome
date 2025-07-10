@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import drilldown from 'highcharts/modules/drilldown';
 import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
+import Breadcrumbs from './Breadcrumbs'
 
 if (typeof Highcharts !== 'undefined' && typeof drilldown === 'function') {
   drilldown(Highcharts);
@@ -232,6 +233,16 @@ export default function Ranking() {
       }
     }, [activeTab]);
 
+    useEffect(() => {
+    if (modalOpen) {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+    }
+    }, [modalOpen]);
+
     const createChart = (tabName) => {
     const container = chartRefs[tabName]?.current;
     if (!container) return;
@@ -455,23 +466,33 @@ export default function Ranking() {
 
   return (
     <>
-      {/* EFC: Paneles con los TABS */}
-      <section id="ranking" className="content-section min-h-screen">
-        <div className="ra-landing" >
-          <div className="container">
-            <div className="tab-container">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+      {/* EFC: Estructura standard pantalla */}
+      <div>                                                                   
+          <div className="mx-auto px-6 custom-container">
+              <Breadcrumbs />  
+              {/* EFC: Titulo */}
+              <div className="titulo-pantalla">
+                <h2>
+                    Ranking ETFA - Departamento de Entidades Técnicas y Laboratorio - SMA
+                </h2>     
+              </div>
 
-            {tabs.map((tab) => (
+              {/* EFC: Contenido */}    
+              <div className="contenido-pantalla">
+
+                <div className="tab-container">
+                {tabs.map((tab) => (
+                <button
+                key={tab.id}
+                className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab.id)}
+                >
+                {tab.label}
+                </button>
+                ))}
+                </div>
+
+              {tabs.map((tab) => (
               <div
                 key={tab.id}
                 id={tab.id}
@@ -528,18 +549,26 @@ export default function Ranking() {
                   </div>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}  
+              </div>
+          </div> 
+      </div>
 
       {/* EFC: Control del MODAL */}
       {modalOpen && (
+        
         <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-auto"
-        style={{ zIndex: 2000 }}
+          className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center"
+          style={{ backdropFilter: 'blur(4px)' }}
+          onClick={(e) => {
+          if (e.target === e.currentTarget) setModalOpen(false);
+          }}
         >
-        <div className="bg-white rounded-lg w-[90%] max-w-6xl p-6 shadow-lg relative max-h-[90vh] overflow-auto">
+
+        <div className="bg-white rounded-lg w-[90%] max-w-6xl p-6 shadow-lg relative max-h-[90vh] overflow-auto"
+          onClick={(e) => e.stopPropagation()} // evita que el click en el modal cierre
+        >
+
         {/* Título */}
         <h2 className="text-2xl font-semibold text-slate-800 mb-4">
         Ranking ETFA Detalles de Cumplimiento - {activeTabLabel}

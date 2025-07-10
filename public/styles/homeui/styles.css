@@ -1,5 +1,9 @@
 
 /* Custom styles for the landing section */
+body {
+  font-family: system-ui;
+}
+
 .cu-landing {
     display: flex;
     justify-content: flex-start; /* alinea al inicio (izquierda) */
@@ -33,7 +37,7 @@
 .fuente-inicio {
     /* background-color: #004677; */
     border-radius: 6px;
-    font-family: Museo Sans Display, sans-serif;
+    /* font-family: 'Nunito Sans', sans-serif; */
     font-size: clamp(18px, 2.5vw, 26px);
     font-weight: 700;
     margin: 8 0 .1rem;
@@ -113,6 +117,11 @@
     animation: float 3s ease-in-out infinite;
 }
 
+.custom-container {
+  margin-top: 150;
+  margin-bottom: 80;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -127,6 +136,8 @@
     transition: all 0.3s ease;
     cursor: pointer;
     border: 2px solid transparent;
+    width: 100%;             /* Ancho fijo (ajústalo según tu necesidad) */
+    height: 100%;            /* Alto fijo */
 }
 
 .info-panel:hover {
@@ -537,7 +548,7 @@ body.dark-mode {
     overflow-x: auto;
     flex-wrap: nowrap;
     gap: 10px;
-    display: flex; 
+    display: flex;  
     background: #f1f5f9;
     border-bottom: 2px solid #e2e8f0;
     padding: 8px 0;;
@@ -548,7 +559,7 @@ body.dark-mode {
 }
 
 .tab {
-    padding: 18px 30px;
+    padding: 18px 30px; 
     cursor: pointer;
     background: #f8fafc;
     border: none;
@@ -736,6 +747,94 @@ highcharts-figure,
   flex-wrap: wrap;
 }
 
+/* pantallas standard */
+.titulo-pantalla {
+  font-size: 1.5rem;             /* Equivale a text-2xl */
+  font-weight: 600;              /* Equivale a font-semibold */
+  color: #1e293b;              /* Equivale a text-slate-800 */
+  margin-bottom: 1rem;           /* Equivale a mb-4 */
+  width: 80%;                    /* Equivale a w-[80%] */
+  text-align: left;              /* Equivale a text-left */
+  margin-left: auto;             /* Equivale a mx-auto (centrar horizontalmente) */
+  margin-right: auto;
+}
+
+.contenido-pantalla {  
+  width: 80%;                    /* Equivale a w-[80%] */
+  /* text-align: left;  */            /* Equivale a text-left */
+  margin-left: auto;             /* Equivale a mx-auto (centrar horizontalmente) */
+  margin-right: auto;
+}
+
+.parrafos-con-lineas p:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.link-azul {
+  color: blue;
+  text-decoration: underline;
+}
+
+.boton-verde {
+  display: inline-block;
+  background-color: #a8e6cf;
+  color: #084c41;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.boton-verde:hover {
+  background-color: #81d4ac;
+}
+
+/* para los breadcrumbs */
+nav[aria-label="breadcrumb"] ol {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.9rem;
+}
+
+nav ol li::after {
+  content: " / ";
+  margin: 0 0.2rem;
+}
+
+nav ol li:last-child::after {
+  content: "";
+}
+
+.breadcrumbs {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  width: 80%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs ol li::after {
+  content: '/';
+  margin: 0 0.5rem;
+  color: #94a3b8; /* gris claro */
+}
+
+.breadcrumbs ol li:last-child::after {
+  content: '';
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .nav-desktop {
@@ -790,5 +889,7 @@ highcharts-figure,
     .modal-buttons button {
         width: 100%;
     }
+
+
 }
 
